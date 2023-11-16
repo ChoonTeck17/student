@@ -61,7 +61,7 @@ session_start();
                             Student
                         </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Add Student</a>
+                                <a class="dropdown-item" href="addstudent.php">Add Student</a>
                                 <a class="dropdown-item" href="#">Edit Student</a>
                                 <a class="dropdown-item" href="#">View Student</a>
                                 <a class="dropdown-item" href="#">Delete Student</a>
