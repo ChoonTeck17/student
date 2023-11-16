@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 $host ="localhost";
 $user ="root";
@@ -26,7 +27,9 @@ if($con){
      $result=mysqli_query($con,$query);
 
      if ($result){
-         echo "apply success";
+
+        $_SESSION['message'] = "your application has been sent";
+        header("location:index.php");
      }else{
          echo "apply no success";
      }
