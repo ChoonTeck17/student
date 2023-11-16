@@ -23,7 +23,7 @@ if($con){
      $add_phone = $_POST['phone'];
      $add_message = $_POST['message'];
      
-     $query="insert into admission (name, email, phone, message) values ('$add_name','$add_email','$add_phone','$add_message') ";
+     $query="INSERT INTO `admission` (`name`, `email`, `phone`, `message`) values ('$add_name','$add_email','$add_phone','$add_message')";
      $result=mysqli_query($con,$query);
 
      if ($result){
@@ -34,4 +34,5 @@ if($con){
          echo "apply no success";
      }
  }
+
 ?>
