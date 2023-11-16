@@ -1,5 +1,6 @@
 <?php
-    include("db.php")
+    include("db.php");
+    include("add.php");
 ?>
 
 <?php
@@ -76,7 +77,7 @@
     <!-- popout -->
 
     </div>
-        <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="login" tabindex="-1" aria-labelledby="" aria-hidden="true">
         <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
@@ -201,7 +202,7 @@
 </div>
 
 <!-- Modal -->
-    <div class="modal fade" id="register" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="register" tabindex="-1" aria-labelledby="1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
@@ -209,14 +210,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-        <form>
+        <form action ="add.php" method ="POST">
 
         <label for="basic-url">Username</label>
         <div class="input-group mb-3">
         <div class="input-group-prepend">
             <span class="input-group-text" id="basic-addon3">@</span>
         </div>
-        <input type="text" class="form-control" id="name" name ="username"placeholder="Enter username" aria-describedby="basic-addon3">
+        <input type="text" class="form-control"  name ="name" placeholder="Enter username" aria-describedby="basic-addon3">
         </div>
 
         <label for="basic-url">Email</label>
@@ -236,12 +237,13 @@
             <label for="msg">Message</label>
             <textarea class="form-control" id="msg" name="message" rows="3"></textarea>
         </div>
+        <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary" name="apply">Apply</button>
+            </div>
         </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary" name="submit">Submit</button>
-            </div>
+          
             </div>
         </div>
     </div>
