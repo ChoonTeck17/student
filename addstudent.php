@@ -27,15 +27,18 @@ session_start();
       $user_email=$_POST['email'];
       $user_phone=$_POST['phone'];
       $user_password=$_POST['password'];
+      $user_gender=$_POST['gender'];
+      $user_dob=$_POST['dob'];
       $usertype="student";
 
-      $query = "insert into student(fname, lname, username, email, phone, password, usertype) values ('$fname','$lname','$username','$user_email','$user_phone','$user_phone','$user_password','$usertype')";
+      $query = "insert into student(fname, lname, username, email, phone, password, gender, dob, usertype) values ('$fname', '$lname', '$username', '$user_email', '$user_phone', '$user_password', '$user_gender', '$user_dob', '$usertype')";
    
       $result=mysqli_query($con,$query);
     
           if ($result){
 
-            echo "add student success";
+            $_SESSION['message1'] = "the student has been added";
+            header("location:index.php");
 
         }else{
             echo "add student no success";
@@ -43,6 +46,22 @@ session_start();
       }
     }
 ?>
+
+<?php
+    
+    error_reporting(0);
+    session_start();
+    session_destroy();
+
+    if($_SESSION['message1']){
+        $message1 = $_SESSION['message1'];
+
+        echo "<script type= 'text/javascript'> 
+         alert ('$message1');
+                </script>";
+    }
+?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -123,7 +142,7 @@ top: 13px;
                 <div class="col-md-6 mb-4 pb-2">
 
                 <div class="form-outline">
-                  <input type="email" id="email" class="form-control form-control-lg" />
+                  <input type="email" id="email" name="email" class="form-control form-control-lg" />
                   Email               
                  </div>
 
@@ -134,7 +153,7 @@ top: 13px;
                 <div class="col-md-6 mb-4 d-flex align-items-center">
 
                   <div class="form-outline datepicker w-100">
-                    <input type="date" class="form-control form-control-lg" name="DOB" id="birthdayDate" />
+                    <input type="date" class="form-control form-control-lg" name="dob" id="birthdayDate" />
                     Birthday
                   </div>
 
@@ -145,13 +164,13 @@ top: 13px;
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                      value="option1" checked />
+                      value="male" checked />
                     Male
                   </div>
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="maleGender"
-                      value="option2" />
+                      value="female" />
                     Female
                   </div>
 
@@ -165,8 +184,16 @@ top: 13px;
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
-                    <input type="tel" id="phoneNumber" name="phone" class="form-control form-control-lg" />
+                    <input type="tel" id="phone" name="phone" class="form-control form-control-lg" />
                   Phone number
+                  </div>
+
+                </div>
+                <div class="col-md-6 mb-4 pb-2">
+
+                  <div class="form-outline">
+                    <input type="tel" id="password" name="password" class="form-control form-control-lg" />
+                  Password
                   </div>
 
                 </div>
