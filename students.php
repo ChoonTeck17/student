@@ -1,6 +1,6 @@
 <?php 
     include("db.php");
-    include("/deletestudent.php");
+    include("deletestudent.php");
 ?>
 
 <?php
@@ -88,14 +88,10 @@
 
             <br><br><br>
  <h1 class="text-center">View student details</h1><br><br><br>
- <div class="text-center">
-          <a class="btn btn-primary" href="student/addstudent.php" role="button">Add</a>
-          <button type="button" class="btn btn-primary">Edit</button>
-          <button type="button" class="btn btn-primary" name="delete">Delete</button>
-          
-</div>
+ 
 <div class ="container">
-    <form action="/deletestudent.php" method="POST">
+    <form action="deletestudent.php" method="POST">
+         
             <table id ="info" class="table table-hover table-fixed mx-auto">
                 <col style="width:1%"/>
                 <col style="width:5%"/>
@@ -107,21 +103,21 @@
                 <col style="width:10%"/>
                 <col style="width:30%"/>
 
-                <?php
-                if(isset($_SESSION['status'])){
-                    echo "<h4>".$_SESSION['status']."</h4>";
-                    unset($_SESSION['status']);
-                }
-                ?>
-
+                <div class="text-center">
+                        <a class="btn btn-primary" href="student/addstudent.php" role="button">Add</a>
+                        <button type="button" class="btn btn-primary">Edit</button>
+                        <button type="submit" class="btn btn-primary" name="delete">Delete</button>
+                    </div>
+              
                 <thead class="table-dark">
                     <tr>
+                
                     <th class="text-center border border-2" scope="col"></th>
                     <th class="text-center border border-2" scope="col">Id</th>
-                    <th class="text-center border border-2" scope="col">Gender</th>
+                    <th class="text-center border border-2" scope="col">Username</th>
                     <th class="text-center border border-2" scope="col">First Name</th>
                     <th class="text-center border border-2" scope="col">Last Name</th>
-                    <th class="text-center border border-2" scope="col">Username</th>
+                    <th class="text-center border border-2" scope="col">Gender</th>
                     <th class="text-center border border-2" scope="col">Email</th>
                     <th class="text-center border border-2" scope="col">phone</th>
                     <th class="text-center border border-2" scope="col">Date of birth</th>
@@ -131,28 +127,42 @@
                     </tr>
                 </thead>
             <tbody>
-
             <?php 
-            while ($info = $result-> fetch_assoc()){
+
+
+            $con = mysqli_connect($host, $user, $password, $db);
+
+            $query = "select * from student";
+            $result= mysqli_query($con,$query);
+
+            if(mysqli_num_rows($result) > 0){
+                foreach($result as $row){
+                    ?>
+                <tr>
+                    <td class="text-center border border-2"><input type="checkbox"  name="dlt_chkbox[]" value="<?= $row['id']; ?> "></td>
+                    <td class="text-center border border-2"><?php echo "{$row['id']}";?></td>
+                    <td class="text-center border border-2"><?php echo "{$row['username']}";?></td>
+                    <td class="text-center border border-2"><?php echo "{$row['fname']}";?></td>
+                    <td class="text-center border border-2"><?php echo "{$row['lname']}";?></td>
+                    <td class="text-center border border-2"><?php echo "{$row['gender']}";?></td>
+                    <td class="text-center border border-2"><?php echo "{$row['email']}";?></td>
+                    <td class="text-center border border-2"><?php echo "{$row['phone']}";?></td>
+                    <td class="text-center border border-2"><?php echo "{$row['dob']}";?></td>
+                </tr>
+                    <?php 
+                }
+            }
+            else{
+                ?>
+                <tr><td colspan="9">no record</td></tr>
+                <?php
+            }
+            ?>
 
             
 
-            ?>
-                <tr>
-                <td class="text-center border border-2"><input type="checkbox"  name="dlt_chkbox[]" value="<? $info['id']; ?> ="></td>
-                <td class="text-center border border-2"><?php echo "{$info['id']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['gender']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['fname']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['lname']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['username']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['email']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['phone']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['dob']}";?></td>
-
-                </tr>
-                <?php
-                 }
-                ?>
+             
+         
                 
             </tbody>
             </table>
