@@ -1,5 +1,6 @@
 <?php 
     include("db.php");
+    include("/deletestudent.php");
 ?>
 
 <?php
@@ -18,11 +19,12 @@
     $db = "school";
 
     $con = mysqli_connect($host, $user, $password, $db);
-    $query = "select * from admission"; 
+    $query = "select * from student"; 
     $result = mysqli_query($con, $query);
 
 
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -83,24 +85,48 @@
                 </div>
             </div>
             </nav>
-            <br>
 
- <h1 class="text-center">All admission details</h1>
+            <br><br><br>
+ <h1 class="text-center">View student details</h1><br><br><br>
+ <div class="text-center">
+          <a class="btn btn-primary" href="student/addstudent.php" role="button">Add</a>
+          <button type="button" class="btn btn-primary">Edit</button>
+          <button type="button" class="btn btn-primary" name="delete">Delete</button>
+          
+</div>
 <div class ="container">
+    <form action="/deletestudent.php" method="POST">
             <table id ="info" class="table table-hover table-fixed mx-auto">
+                <col style="width:1%"/>
                 <col style="width:5%"/>
-                <col style="width:20%"/>
-                <col style="width:20%"/>
-                <col style="width:20%"/>
+                <col style="width:5%"/>
+                <col style="width:15%"/>
+                <col style="width:15%"/>
+                <col style="width:15%"/>
+                <col style="width:25%"/>
+                <col style="width:10%"/>
                 <col style="width:30%"/>
+
+                <?php
+                if(isset($_SESSION['status'])){
+                    echo "<h4>".$_SESSION['status']."</h4>";
+                    unset($_SESSION['status']);
+                }
+                ?>
 
                 <thead class="table-dark">
                     <tr>
+                    <th class="text-center border border-2" scope="col"></th>
                     <th class="text-center border border-2" scope="col">Id</th>
-                    <th class="text-center border border-2" scope="col">Name</th>
+                    <th class="text-center border border-2" scope="col">Gender</th>
+                    <th class="text-center border border-2" scope="col">First Name</th>
+                    <th class="text-center border border-2" scope="col">Last Name</th>
+                    <th class="text-center border border-2" scope="col">Username</th>
                     <th class="text-center border border-2" scope="col">Email</th>
-                    <th class="text-center border border-2" scope="col">Phone</th>
-                    <th class="text-center border border-2" scope="col">Message</th>
+                    <th class="text-center border border-2" scope="col">phone</th>
+                    <th class="text-center border border-2" scope="col">Date of birth</th>
+
+
 
                     </tr>
                 </thead>
@@ -113,11 +139,16 @@
 
             ?>
                 <tr>
+                <td class="text-center border border-2"><input type="checkbox"  name="dlt_chkbox[]" value="<? $info['id']; ?> ="></td>
                 <td class="text-center border border-2"><?php echo "{$info['id']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['name']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['gender']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['fname']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['lname']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['username']}";?></td>
                 <td class="text-center border border-2"><?php echo "{$info['email']}";?></td>
                 <td class="text-center border border-2"><?php echo "{$info['phone']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['message']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['dob']}";?></td>
+
                 </tr>
                 <?php
                  }
@@ -125,7 +156,17 @@
                 
             </tbody>
             </table>
+            </form>
           </div>
+        
+<!-- Modal -->
+
+
+
+
+
+
+
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

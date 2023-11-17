@@ -1,10 +1,11 @@
 <?php
 session_start();
 
+
     if(!isset($_SESSION['username'])){
-        header("location:index.php");
+        header("location:../index.php");
     }elseif($_SESSION['usertype']=='student'){
-        header("location:index.php");
+        header("location:../index.php");
     }
 
     $host ="localhost";
@@ -31,36 +32,19 @@ session_start();
       $user_dob=$_POST['dob'];
       $usertype="student";
 
-      $query = "insert into student(fname, lname, username, email, phone, password, gender, dob, usertype) values ('$fname', '$lname', '$username', '$user_email', '$user_phone', '$user_password', '$user_gender', '$user_dob', '$usertype')";
-   
+      $query = "insert into student(fname, lname, username, email, phone, password, gender, dob, usertype, created) values ('$fname', '$lname', '$username', '$user_email', '$user_phone', '$user_password', '$user_gender', '$user_dob', '$usertype', CURRENT_TIMESTAMP)";
       $result=mysqli_query($con,$query);
     
-          if ($result){
-
-            $_SESSION['message1'] = "the student has been added";
-            header("location:index.php");
-
-        }else{
-            echo "add student no success";
+      if ($result){
+        echo '<script>alert("successfully added"); window.location.href = "../students.php";</script>'; 
+      }else{
+        echo '<script>alert("add student fail")</script>'; 
         
       }
     }
 ?>
 
-<?php
-    
-    error_reporting(0);
-    session_start();
-    session_destroy();
 
-    if($_SESSION['message1']){
-        $message1 = $_SESSION['message1'];
-
-        echo "<script type= 'text/javascript'> 
-         alert ('$message1');
-                </script>";
-    }
-?>
 
 
 <!DOCTYPE html>
@@ -118,15 +102,15 @@ top: 13px;
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline">
-                    <input type="text" id="firstName" name ="fname" class="form-control form-control-lg" />
+                    <input type="text" id="firstName" name ="fname" class="form-control form-control-lg"  />
                     First Name
                   </div>
-
+  
                 </div>
                 <div class="col-md-6 mb-4">
 
                 <div class="form-outline">
-                  <input type="text" id="lastName" name ="lname" class="form-control form-control-lg" />
+                  <input type="text" id="lastName" name ="lname" class="form-control form-control-lg"  />
                   Last Name
                 </div>
 
@@ -153,7 +137,7 @@ top: 13px;
                 <div class="col-md-6 mb-4 d-flex align-items-center">
 
                   <div class="form-outline datepicker w-100">
-                    <input type="date" class="form-control form-control-lg" name="dob" id="birthdayDate" />
+                    <input type="date" class="form-control form-control-lg" name="dob" id="birthdayDate"  />
                     Birthday
                   </div>
 
@@ -164,7 +148,7 @@ top: 13px;
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                      value="male" checked />
+                      value="male"   />
                     Male
                   </div>
 
@@ -184,7 +168,7 @@ top: 13px;
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
-                    <input type="tel" id="phone" name="phone" class="form-control form-control-lg" />
+                    <input type="tel" id="phone" name="phone" class="form-control form-control-lg"  maxlength="10" />
                   Phone number
                   </div>
 
@@ -192,7 +176,7 @@ top: 13px;
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
-                    <input type="tel" id="password" name="password" class="form-control form-control-lg" />
+                    <input type="password" id="password" name="password" class="form-control form-control-lg" />
                   Password
                   </div>
 
@@ -202,7 +186,9 @@ top: 13px;
           
 
               <div class="mt-4 pt-2 text-center">
-                <input class="btn btn-primary btn-lg" type="submit"  name="add_student" value="Submit" />
+                <input class="btn btn-primary btn-lg" type="submit"  name="add_student" value="Confirm" />
+    
+
               </div>
 
             </form>

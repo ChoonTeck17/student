@@ -61,10 +61,10 @@ session_start();
                             Student
                         </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="addstudent.php">Add Student</a>
+                                <a class="dropdown-item" href="student/addstudent.php">Add Student</a>
                                 <a class="dropdown-item" href="#">Edit Student</a>
-                                <a class="dropdown-item" href="#">View Student</a>
-                                <a class="dropdown-item" href="#">Delete Student</a>
+                                <a class="dropdown-item" href="student/viewstudent.php">View Student</a>
+                                <a class="dropdown-item" href="student/deletestudent.php">Delete Student</a>
                             </div>
                     </div>
                     </li>
@@ -96,6 +96,7 @@ session_start();
                             </div>
                     </div>
                     </li>
+                    <li><a class="dropdown-item" href="students.php">students</a></li>
                   
                 </ul>
                   

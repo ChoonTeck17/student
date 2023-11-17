@@ -1,14 +1,14 @@
 <?php 
-    include("db.php");
+    include("../db.php");
 ?>
 
 <?php
  session_start();
 
  if(!isset($_SESSION['username'])){
-    header("location:index.php");
+    header("location:../index.php");
 }elseif($_SESSION['usertype']=='student'){
-    header("location:index.php");
+    header("location:../index.php");
 }
 
 
@@ -18,7 +18,7 @@
     $db = "school";
 
     $con = mysqli_connect($host, $user, $password, $db);
-    $query = "select * from admission"; 
+    $query = "select * from student"; 
     $result = mysqli_query($con, $query);
 
 
@@ -33,7 +33,7 @@
     <script defer src ="https://code.jquery.com/jquery-3.7.0.js"></script>
     <script defer src ="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src ="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
-    <script defer src ="script.js"></script>
+    <script defer src ="../script.js"></script>
     <style type="text/css">
 .table {
     margin: 0 auto;
@@ -77,30 +77,40 @@
                 <form class="d-flex" role="search">
                    
 
-                <a class="btn btn-primary" href="adminHome.php" role="button">Back to dashboard</a>
+                <a class="btn btn-primary" href="../adminHome.php" role="button">Back to dashboard</a>
 
                 </form>
                 </div>
             </div>
             </nav>
-            <br>
 
- <h1 class="text-center">All admission details</h1>
+            <br><br><br>
+ <h1 class="text-center">View student details</h1><br><br><br>
 <div class ="container">
             <table id ="info" class="table table-hover table-fixed mx-auto">
                 <col style="width:5%"/>
-                <col style="width:20%"/>
-                <col style="width:20%"/>
-                <col style="width:20%"/>
+                <col style="width:5%"/>
+                <col style="width:15%"/>
+                <col style="width:15%"/>
+                <col style="width:15%"/>
+                <col style="width:25%"/>
+                <col style="width:10%"/>
                 <col style="width:30%"/>
+
+
 
                 <thead class="table-dark">
                     <tr>
                     <th class="text-center border border-2" scope="col">Id</th>
-                    <th class="text-center border border-2" scope="col">Name</th>
+                    <th class="text-center border border-2" scope="col">Gender</th>
+                    <th class="text-center border border-2" scope="col">First Name</th>
+                    <th class="text-center border border-2" scope="col">Last Name</th>
+                    <th class="text-center border border-2" scope="col">Username</th>
                     <th class="text-center border border-2" scope="col">Email</th>
-                    <th class="text-center border border-2" scope="col">Phone</th>
-                    <th class="text-center border border-2" scope="col">Message</th>
+                    <th class="text-center border border-2" scope="col">phone</th>
+                    <th class="text-center border border-2" scope="col">Date of birth</th>
+
+
 
                     </tr>
                 </thead>
@@ -114,10 +124,14 @@
             ?>
                 <tr>
                 <td class="text-center border border-2"><?php echo "{$info['id']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['name']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['gender']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['fname']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['lname']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['username']}";?></td>
                 <td class="text-center border border-2"><?php echo "{$info['email']}";?></td>
                 <td class="text-center border border-2"><?php echo "{$info['phone']}";?></td>
-                <td class="text-center border border-2"><?php echo "{$info['message']}";?></td>
+                <td class="text-center border border-2"><?php echo "{$info['dob']}";?></td>
+
                 </tr>
                 <?php
                  }

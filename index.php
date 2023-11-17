@@ -222,7 +222,7 @@
         </div>
 
         <div class="modal-body">
-        <form action ="add.php" method ="POST">
+        <form action ="addAdmission.php" method ="POST">
 
         <label for="basic-url">Username</label>
         <div class="input-group mb-3">
