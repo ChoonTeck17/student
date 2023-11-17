@@ -1,6 +1,6 @@
 <?php 
     include("db.php");
-    include("deletestudent.php");
+    include("student/deletestudent.php");
 ?>
 
 <?php
@@ -90,7 +90,7 @@
  <h1 class="text-center">View student details</h1><br><br><br>
  
 <div class ="container">
-    <form action="deletestudent.php" method="POST">
+    <form action="student/deletestudent.php" method="POST">
          
             <table id ="info" class="table table-hover table-fixed mx-auto">
                 <col style="width:1%"/>

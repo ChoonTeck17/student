@@ -16,10 +16,10 @@ if(isset($_POST['delete'])){
     $result = mysqli_query($con, $query);
 
         if($result){
-            echo '<script>alert("successfully deleted"); window.location.href = "students.php";</script>'; 
+            echo '<script>alert("successfully deleted"); window.location.href = "../students.php";</script>'; 
 
         }else{
-            echo '<script>alert("delete failed"); window.location.href = "students.php";</script>'; 
+            echo '<script>alert("delete failed"); window.location.href = "../students.php";</script>'; 
 
 
 
