@@ -32,6 +32,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        .card{
+  margin-top:80px!important;
+  margin-right:50px!important;
+
+  }
+    </style>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
@@ -61,7 +69,7 @@
           <a class="nav-link active" href="#">Contact Us</a>
         </li>
         <li class="nav-item">
-        <a class="nav-link active" href="#">FAQ</a>
+        <a class="nav-link active" href="static/faq.php">FAQ</a>
         </li>
       </ul>
       <form class="d-flex" role="search">
@@ -178,31 +186,6 @@
         <h1>our courses</h1>
     </center>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-               <img class="img2" src ="image/gojo.jpg">
-               <p>
-                geng pls don lose
-               </p>
-
-            </div>
-            <div class="col-md-4">
-              <img class="img2" src ="image/gojo.jpg">
-               <p>
-                geng pls don lose
-               </p>
-
-            </div>
-            <div class="col-md-4">
-                <img class="img2" src ="image/gojo.jpg">
-                <p>
-                geng pls don losee
-                </p>
-
-            </div>
-        </div>
-    </div>
 
 
 
@@ -260,7 +243,38 @@
         </div>
     </div>
 
+<div class ="container py-5">
+    <div class ="row mt-4">
 
+    <?php
+$con = mysqli_connect($host, $user, $password, $db);
+$query = "select * from courses";
+$result= mysqli_query($con,$query);
+$result1= mysqli_num_rows($result);
+
+if($result1){
+    while($row = mysqli_fetch_assoc($result)){
+        ?>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body shadow p-4 mb-4 bg-white ">
+                        <img src ="image/gojo.jpg" class="card-img-top" alt="faculty image">
+                        <h5 class="card-title"><?php echo "{$row['name']}";?></h5>
+                        <p class="card-text"><?php echo "{$row['description']}";?></p>                    
+                    </div>
+                </div>
+            </div>
+            <?php
+    }
+}
+
+else{
+    echo "no found";
+}
+
+?>
+    </div>
+</div>
 
 
     <?php include('footer.php'); ?>

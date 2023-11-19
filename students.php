@@ -102,6 +102,8 @@
                 <col style="width:25%"/>
                 <col style="width:10%"/>
                 <col style="width:30%"/>
+                <col style="width:10%"/>
+
 
                 <div class="text-center">
                         <a class="btn btn-primary" href="student/addstudent.php" role="button">Add</a>
@@ -121,6 +123,8 @@
                     <th class="text-center border border-2" scope="col">Email</th>
                     <th class="text-center border border-2" scope="col">phone</th>
                     <th class="text-center border border-2" scope="col">Date of birth</th>
+                    <th class="text-center border border-2" scope="col">Usertype</th>
+
 
 
 
@@ -148,6 +152,8 @@
                     <td class="text-center border border-2"><?php echo "{$row['email']}";?></td>
                     <td class="text-center border border-2"><?php echo "{$row['phone']}";?></td>
                     <td class="text-center border border-2"><?php echo "{$row['dob']}";?></td>
+                    <td class="text-center border border-2"><?php echo "{$row['usertype']}";?></td>
+
                 </tr>
                     <?php 
                 }
