@@ -56,47 +56,16 @@ session_start();
                     </li>
                     <br>  <br>
                     <li>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Student
-                        </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="student/addstudent.php">Add Student</a>
-                                <a class="dropdown-item" href="#">Edit Student</a>
-                                <a class="dropdown-item" href="student/viewstudent.php">View Student</a>
-                                <a class="dropdown-item" href="student/deletestudent.php">Delete Student</a>
-                            </div>
-                    </div>
+                        <a class="btn btn-secondary" href="students.php" role="button">Student</a>
                     </li>
-                    <br>  <br>
+                    <br><br>
                     <li>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Teacher
-                        </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Add Teacher</a>
-                                <a class="dropdown-item" href="#">Edit Teacher</a>
-                                <a class="dropdown-item" href="#">View Teacher</a>
-                                <a class="dropdown-item" href="#">Delete Teacher</a>
-                            </div>
-                    </div>
+                        <a class="btn btn-secondary" href="teachers.php" role="button">Teachers</a>
                     </li>
-                    <br>  <br>
+                    <br><br>
                     <li>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Add Courses
-                        </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item" href="#">Add Courses</a>
-                                <a class="dropdown-item" href="#">Edit Courses</a>
-                                <a class="dropdown-item" href="#">View Courses</a>
-                                <a class="dropdown-item" href="#">Delete Courses</a>
-                            </div>
-                    </div>
+                        <a class="btn btn-secondary" href="courses.php" role="button">Courses</a>
                     </li>
-                    <li><a class="dropdown-item" href="students.php">students</a></li>
                   
                 </ul>
                   

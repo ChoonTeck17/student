@@ -1,5 +1,4 @@
 <?php
-include ("../db.php");
 session_start();
 
 
@@ -22,24 +21,21 @@ session_start();
       echo "Not Connected";
     }
 
-    if(isset($_POST['add_student'])){
+    if(isset($_POST['add_teacher'])){
       $fname=$_POST['fname'];
       $lname=$_POST['lname'];
-      $username=$_POST['username'];
       $user_email=$_POST['email'];
       $user_phone=$_POST['phone'];
-      $user_password=$_POST['password'];
       $user_gender=$_POST['gender'];
       $user_dob=$_POST['dob'];
-      $usertype="student";
 
-      $query = "insert into student(fname, lname, username, email, phone, password, gender, dob, usertype, created) values ('$fname', '$lname', '$username', '$user_email', '$user_phone', '$user_password', '$user_gender', '$user_dob', '$usertype', CURRENT_TIMESTAMP)";
+      $query = "insert into teachers(fname, lname, email, phone, gender, dob, created) values ('$fname', '$lname', '$user_email', '$user_phone', '$user_gender', '$user_dob', CURRENT_TIMESTAMP)";
       $result=mysqli_query($con,$query);
     
       if ($result){
-        echo '<script>alert("successfully added"); window.location.href = "../students.php";</script>'; 
+        echo '<script>alert("successfully added"); window.location.href = "../teachers.php";</script>'; 
       }else{
-        echo '<script>alert("add student fail")</script>'; 
+        echo '<script>alert("add teacher fail")</script>'; 
         
       }
     }
@@ -53,7 +49,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add student</title>
+    <title>Add Teacher</title>
     <style>
         .gradient-custom {
 /* fallback for old browsers */
@@ -95,9 +91,9 @@ top: 13px;
         <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
           <div class="card-body p-4 p-md-5">
           
-          <div class="text-center">
+            <div class="text-center">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
-          </div>
+            </div>
             <form action="" method="POST" >
 
               <div class="row">
@@ -112,7 +108,7 @@ top: 13px;
                 <div class="col-md-6 mb-4">
 
                 <div class="form-outline">
-                  <input type="text" id="lastName" name ="lname" class="form-control form-control-lg"  placeholder="<?php echo "{$row['username']}";?>"/>
+                  <input type="text" id="lastName" name ="lname" class="form-control form-control-lg"  />
                   Last Name
                 </div>
 
@@ -175,20 +171,13 @@ top: 13px;
                   </div>
 
                 </div>
-                <div class="col-md-6 mb-4 pb-2">
-
-                  <div class="form-outline">
-                    <input type="password" id="password" name="password" class="form-control form-control-lg" />
-                  Password
-                  </div>
-
-                </div>
+              
               </div>
 
           
 
               <div class="mt-4 pt-2 text-center">
-                <input class="btn btn-primary btn-lg" type="submit"  name="add_student" value="Confirm" />
+                <input class="btn btn-primary btn-lg" type="submit"  name="add_teacher" value="Confirm" />
     
 
               </div>
