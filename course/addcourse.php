@@ -1,4 +1,6 @@
 <?php
+
+include ("../db.php");
 session_start();
 
 
@@ -21,23 +23,29 @@ session_start();
       echo "Not Connected";
     }
 
-    if(isset($_POST['add_teacher'])){
-      $fname=$_POST['fname'];
-      $lname=$_POST['lname'];
-      $user_email=$_POST['email'];
-      $user_phone=$_POST['phone'];
-      $user_gender=$_POST['gender'];
-      $user_dob=$_POST['dob'];
+    if(isset($_POST['add_course'])){
+      $name=$_POST['name'];
+      $description=$_POST['description'];
+      $image = $_FILES["image"]["image"];
+      $tempname = $_FILES["uploadfile"]["tmp_name"];
+      $folder = "./image/" . $image;
 
-      $query = "insert into teachers(fname, lname, email, phone, gender, dob, created) values ('$fname', '$lname', '$user_email', '$user_phone', '$user_gender', '$user_dob', CURRENT_TIMESTAMP)";
+
+      $query = "insert into courses(name, description, image) values ('$name', '$description', '$image')";
       $result=mysqli_query($con,$query);
     
       if ($result){
-        echo '<script>alert("successfully added"); window.location.href = "../teachers.php";</script>'; 
+        echo '<script>alert("successfully added"); window.location.href = "../courses.php";</script>'; 
       }else{
-        echo '<script>alert("add teacher fail")</script>'; 
-        
+        echo '<script>alert("add course fail")</script>'; 
       }
+
+      if (move_uploaded_file($tempname, $folder)) {
+        echo "<h3>  Image uploaded successfully!</h3>";
+    } else {
+        echo "<h3>  Failed to upload image!</h3>";
+    }
+
     }
 ?>
 
@@ -49,7 +57,7 @@ session_start();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Teacher</title>
+    <title>Add Courses</title>
     <style>
         .gradient-custom {
 /* fallback for old browsers */
@@ -100,84 +108,48 @@ top: 13px;
                 <div class="col-md-6 mb-4">
 
                   <div class="form-outline">
-                    <input type="text" id="firstName" name ="fname" class="form-control form-control-lg"  />
-                    First Name
+                    <input type="text" id="name" name ="name" class="form-control form-control-lg"  />
+                    Name
                   </div>
   
                 </div>
-                <div class="col-md-6 mb-4">
-
-                <div class="form-outline">
-                  <input type="text" id="lastName" name ="lname" class="form-control form-control-lg"  />
-                  Last Name
-                </div>
-
-                </div>
-                <div class="col-md-6 mb-4">
-
-                <div class="form-outline">
-                  <input type="text" id="username" name ="username" class="form-control form-control-lg" />
-                  Username
-                </div>
-
-                </div>
-                <div class="col-md-6 mb-4 pb-2">
-
-                <div class="form-outline">
-                  <input type="email" id="email" name="email" class="form-control form-control-lg" />
-                  Email               
-                 </div>
-
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-4 d-flex align-items-center">
-
-                  <div class="form-outline datepicker w-100">
-                    <input type="date" class="form-control form-control-lg" name="dob" id="dob"  />
-                    Birthday
-                  </div>
-
-                </div>
-                <div class="col-md-6 mb-4">
-
-                  <h6 class="mb-2 pb-1">Gender: </h6>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="femaleGender"
-                      value="male"   />
-                    Male
-                  </div>
-
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="gender" id="maleGender"
-                      value="female" />
-                    Female
-                  </div>
-
                
-
-                </div>
+              
               </div>
+
 
               <div class="row">
                
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
-                    <input type="tel" id="phone" name="phone" class="form-control form-control-lg"  maxlength="10" />
-                  Phone number
+                  Description
+                    <input type="tel" id="description" name="description" class="form-control form-control-lg" width=100% />
+                  
                   </div>
 
                 </div>
               
               </div>
 
+              <div class="row">
+               
+               <div class="col-md-6 mb-4 pb-2">
+
+                 <div class="form-outline">
+                 Upload image
+                   <input type="file" id="image" name="image" class="form-control form-control-lg" accept =".jpg, .jpeg, .png, .gif" />
+                 
+                 </div>
+
+               </div>
+             
+             </div>
+
           
 
               <div class="mt-4 pt-2 text-center">
-                <input class="btn btn-primary btn-lg" type="submit"  name="add_teacher" value="Confirm" />
+                <input class="btn btn-primary btn-lg" type="submit"  name="add_course" value="Confirm" />
     
 
               </div>
