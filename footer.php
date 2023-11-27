@@ -7,7 +7,7 @@
       <div class="row mt-4">
         <!--Grid column-->
         <div class="col-lg-4 col-md-12 mb-4 mb-md-0">
-          <h5 class="text-uppercase mb-4">About company</h5>
+          <h5 class="text-uppercase mb-4">About University</h5>
 
           <p>
             At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
@@ -33,7 +33,7 @@
               <span class="fa-li"><i class="fas fa-home"></i></span><span class="ms-2"> L1-13 Cova Square Jalan Teknologi PJU 5, <br>Kota Damansara, 47810, Selangor</span>
             </li>
             <li class="mb-3">
-              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">KLCCschool@gmail.com</span>
+              <span class="fa-li"><i class="fas fa-envelope"></i></span><span class="ms-2">ApexUni@gmail.com</span>
             </li>
             <li class="mb-3">
               <span class="fa-li"><i class="fas fa-phone"></i></span><span class="ms-2">+ 09 512 8699</span>
@@ -49,16 +49,16 @@
           <table class="table text-center text-white">
             <tbody class="fw-normal">
               <tr>
-                <td>Mon - Thu:</td>
-                <td>8am - 9pm</td>
+                <td>Mon - Fri:</td>
+                <td>8am - 6pm</td>
               </tr>
               <tr>
-                <td>Fri - Sat:</td>
-                <td>8am - 1am</td>
+                <td>Sat:</td>
+                <td>8am - 1pm</td>
               </tr>
               <tr>
                 <td>Sunday:</td>
-                <td>9am - 10pm</td>
+                <td>Off</td>
               </tr>
             </tbody>
           </table>

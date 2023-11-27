@@ -143,11 +143,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img2" src ="image/gojo.jpg">
+                <img class="img2" src ="image/college.jpg">
             </div>
             <div class="col-md-8">
-                <h1>welcome</h1>
-                <p>t1 pls win</p>
+                <h1>Welcome to Apex University</h1>
+                <p>Apex University of Management & Technology, abbreviated AU, is a non-profit, private university in Malaysia.
+                     Named after electronic arts inc, the school was founded in 1969 by Philip Dosen. </p>
             </div>
         </div>
     </div>
@@ -258,8 +259,8 @@ if($result1){
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body shadow p-4 mb-4 bg-white ">
-                        <img src ="image/gojo.jpg" class="card-img-top" alt="faculty image">
-                        <h5 class="card-title"><?php echo "{$row['name']}";?></h5>
+                        <img src ="image/<?php echo "{$row['image']}";?>" class="card-img-top" alt="faculty image">
+                        <h4 class="card-title"><?php echo "{$row['name']}";?></h4>
                         <p class="card-text"><?php echo "{$row['description']}";?></p>                    
                     </div>
                 </div>
