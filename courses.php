@@ -89,7 +89,7 @@
  <h1 class="text-center">View course details</h1><br><br><br>
  
 <div class ="container">
-    <form action="student/deletestudent.php" method="POST">
+    <form action="course/deletecourse.php" method="POST">
          
             <table id ="info" class="table table-hover table-fixed mx-auto">
                 <col style="width:1%"/>

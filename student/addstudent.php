@@ -1,5 +1,4 @@
 <?php
-include ("../db.php");
 session_start();
 
 
@@ -112,7 +111,7 @@ top: 13px;
                 <div class="col-md-6 mb-4">
 
                 <div class="form-outline">
-                  <input type="text" id="lastName" name ="lname" class="form-control form-control-lg"  placeholder="<?php echo "{$row['username']}";?>"/>
+                  <input type="text" id="lastName" name ="lname" class="form-control form-control-lg"  />
                   Last Name
                 </div>
 

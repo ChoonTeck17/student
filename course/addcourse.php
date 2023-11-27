@@ -1,7 +1,6 @@
 <?php
-
-include ("../db.php");
 session_start();
+$pic_upload = 0;
 
 
     if(!isset($_SESSION['username'])){
@@ -23,30 +22,53 @@ session_start();
       echo "Not Connected";
     }
 
-    if(isset($_POST['add_course'])){
-      $name=$_POST['name'];
-      $description=$_POST['description'];
-      $image = $_FILES["image"]["image"];
-      $tempname = $_FILES["uploadfile"]["tmp_name"];
-      $folder = "./image/" . $image;
+if(isset($_POST['add_course'])){
+  $name=$_POST['name'];
+  $desc=$_POST['description'];
+  
+  $image = time().$_FILES["pic"]['name'];
+  if(move_uploaded_file($_FILES['pic']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/student/image/'.$image))
+  {
+    $target_file =  $_SERVER['DOCUMENT_ROOT']. '/student/image/'.$image;
+    $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+    $picname = basename($_FILES['pic']['name']);
+    $photo = time().$picname;
+    if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"){
+        ?>
+        <script>
+          alert ("pls use correct photo format");
+        </script>
+        <?php 
+    } else if($_FILES["pic"]["size"]>4000000){
+      ?>
+        <script>
+          alert ("pic too big");
+        </script>
+        <?php 
+    } else{
+      $pic_upload = 1;
+    }
+  }
 
-
-      $query = "insert into courses(name, description, image) values ('$name', '$description', '$image')";
-      $result=mysqli_query($con,$query);
-    
-      if ($result){
-        echo '<script>alert("successfully added"); window.location.href = "../courses.php";</script>'; 
-      }else{
-        echo '<script>alert("add course fail")</script>'; 
+  if($pic_upload == 1 ){
+    $query =  mysqli_query($con, "insert into courses set name = '$name', description = '$desc', image = '$photo'");
+    if($insert_query>0){
+      ?>
+      <script>
+          alert ("success");
+      </script>
+      <?php
       }
-
-      if (move_uploaded_file($tempname, $folder)) {
-        echo "<h3>  Image uploaded successfully!</h3>";
-    } else {
-        echo "<h3>  Failed to upload image!</h3>";
+    } else{
+      ?>
+      <script>
+          alert ("fail");
+      </script>
+      <?php
     }
+  }
 
-    }
+
 ?>
 
 
@@ -102,54 +124,40 @@ top: 13px;
             <div class="text-center">
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
             </div>
-            <form action="" method="POST" >
+            <form action="" method="POST"  enctype="multipart/form-data">
 
               <div class="row">
                 <div class="col-md-6 mb-4">
-
                   <div class="form-outline">
                     <input type="text" id="name" name ="name" class="form-control form-control-lg"  />
                     Name
                   </div>
-  
-                </div>
-               
-              
+                </div>              
               </div>
 
 
               <div class="row">
-               
                 <div class="col-md-6 mb-4 pb-2">
-
                   <div class="form-outline">
                   Description
-                    <input type="tel" id="description" name="description" class="form-control form-control-lg" width=100% />
-                  
+                    <input type="tel" id="description" name="description" class="form-control form-control-lg" width=100% />  
                   </div>
-
-                </div>
-              
+                </div> 
               </div>
 
               <div class="row">
-               
                <div class="col-md-6 mb-4 pb-2">
-
                  <div class="form-outline">
                  Upload image
-                   <input type="file" id="image" name="image" class="form-control form-control-lg" accept =".jpg, .jpeg, .png, .gif" />
-                 
+                   <input type="file" name="pic" id="pic" accept =".jpg, .jpeg, .png, .gif" value="">
                  </div>
-
-               </div>
-             
+               </div>           
              </div>
 
           
 
               <div class="mt-4 pt-2 text-center">
-                <input class="btn btn-primary btn-lg" type="submit"  name="add_course" value="Confirm" />
+              <input  class="btn btn-primary btn-lg" type="submit" value="Upload Image" name="add_course" value="Confirm" >
     
 
               </div>
