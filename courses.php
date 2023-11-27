@@ -1,5 +1,6 @@
 <?php 
     include("db.php");
+    
 ?>
 
 <?php
@@ -134,7 +135,7 @@
                     <td class="text-center border border-2"><input type="checkbox"  name="dlt_chkbox[]" value="<?= $row['id']; ?> "></td>
                     <td class="text-center border border-2"><?php echo "{$row['name']}";?></td>
                     <td class="text-center border border-2"><?php echo "{$row['description']}";?></td>
-                    <td class="text-center border border-2"><img src="./image/<?php echo $data['image']; ?>">
+                    <td class="text-center border border-2"><img width="100%" src="image/<?php echo $row['image']; ?>">
 </td>
 
 

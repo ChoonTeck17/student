@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 $pic_upload = 0;
 
 
@@ -52,11 +53,10 @@ if(isset($_POST['add_course'])){
 
   if($pic_upload == 1 ){
     $query =  mysqli_query($con, "insert into courses set name = '$name', description = '$desc', image = '$photo'");
-    if($insert_query>0){
+    if($query>0){
       ?>
-      <script>
-          alert ("success");
-      </script>
+        <script>alert("successfully added"); window.location.href = "../courses.php";</script>'; 
+
       <?php
       }
     } else{
