@@ -41,6 +41,7 @@
     margin: 0 auto;
     width: 80%;
 }
+
 </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -102,9 +103,9 @@
 
                 <div class="text-center">
                         <a class="btn btn-primary" href="course/addcourse.php" role="button">Add</a>
-                        <button type="button" class="btn btn-primary">Edit</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit">Eddsdsit</button>                        
                         <button type="submit" class="btn btn-primary" name="delete">Delete</button>
-                    </div>
+                </div>
               
                 <thead class="table-dark">
                     <tr>
@@ -120,6 +121,51 @@
                     </tr>
                 </thead>
             <tbody>
+
+            <div class="modal fade" id="edit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <form action="" method="POST"  enctype="multipart/form-data">
+
+                        <div class="row justify-content-center">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-outline">
+                            Name
+                            <input type="text" id="name" name ="name" class="form-control form-control-lg text-center"  />
+                            </div>
+                        </div>              
+                        </div>
+                        <div class="row  justify-content-center">
+                        <div class="col-md-6 mb-4 pb-2">
+                            <div class="form-outline">
+                            Description
+                            <input type="tel" id="description" name="description" class="form-control form-control-lg" width=100% />  
+                            </div>
+                        </div> 
+                        </div>
+                        <div class="row  justify-content-center">
+                        <div class="col-md-6 mb-4 pb-2">
+                        <div class="form-outline">
+                            <input type="file" name="pic" id="pic" accept =".jpg, .jpeg, .png, .gif" value="">
+                        </div>
+                        </div>           
+                        </div>
+                        <div class="mt-4 pt-2 text-center">
+                        </div>
+                    </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <input  class="btn btn-primary " type="submit" value="Upload Image" name="add_course" value="Confirm" >
+                    </div>
+                    </div>
+                </div>
+            </div>
             <?php 
 
 

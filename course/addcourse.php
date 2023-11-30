@@ -28,9 +28,9 @@ if(isset($_POST['add_course'])){
   $desc=$_POST['description'];
   
   $image = time().$_FILES["pic"]['name'];
-  if(move_uploaded_file($_FILES['pic']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/student/image/'.$image))
+  if(move_uploaded_file($_FILES['pic']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/student/image/course/'.$image))
   {
-    $target_file =  $_SERVER['DOCUMENT_ROOT']. '/student/image/'.$image;
+    $target_file =  $_SERVER['DOCUMENT_ROOT']. '/student/image/course'.$image;
     $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
     $picname = basename($_FILES['pic']['name']);
     $photo = time().$picname;

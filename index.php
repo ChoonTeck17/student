@@ -157,31 +157,38 @@
         <h1>Our lecturers</h1>
     </center>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-               <img class="img2" src ="image/gojo.jpg">
-               <p>
-                geng pls don lose
-               </p>
+    <div class ="container py-5">
+    <div class ="row mt-4">
 
-            </div>
-            <div class="col-md-4">
-              <img class="img2" src ="image/gojo.jpg">
-               <p>
-                geng pls don lose
-               </p>
+    <?php
+$con = mysqli_connect($host, $user, $password, $db);
+$query = "select * from teachers";
+$result= mysqli_query($con,$query);
+$result1= mysqli_num_rows($result);
 
-            </div>
+if($result1){
+    while($row = mysqli_fetch_assoc($result)){
+        ?>
             <div class="col-md-4">
-                <img class="img2" src ="image/gojo.jpg">
-                <p>
-                geng pls don lose
-                </p>
-
+                <div class="card">
+                    <div class="card-body shadow p-4 mb-4 bg-white ">
+                        <img src ="image/<?php echo "{$row['image']}";?>" class="card-img-top" alt="faculty image">
+                        <h4 class="card-title"><?php echo "{$row['fname']} {$row['lname']}";?></h4>
+                    </div>
+                </div>
             </div>
-        </div>
+            <?php
+    }
+}
+
+else{
+    echo "no found";
+}
+
+?>
     </div>
+</div>
+   
 
     <center>
         <h1>our courses</h1>
