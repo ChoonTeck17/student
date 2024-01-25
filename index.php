@@ -53,7 +53,6 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
    
-
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">Navbar</a>
@@ -143,7 +142,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img2" src ="image/college.jpg">
+                <img class="img2" src ="image/gojo.jpg">
             </div>
             <div class="col-md-8">
                 <h1>Welcome to Apex University</h1>
@@ -266,7 +265,7 @@ if($result1){
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-body shadow p-4 mb-4 bg-white ">
-                        <img src ="image/<?php echo "{$row['image']}";?>" class="card-img-top" alt="faculty image">
+                        <img src ="image/course/<?php echo "{$row['image']}";?>" class="card-img-top" alt="faculty image">
                         <h4 class="card-title"><?php echo "{$row['name']}";?></h4>
                         <p class="card-text"><?php echo "{$row['description']}";?></p>                    
                     </div>

@@ -166,7 +166,7 @@ top: 13px;
                 <div class="col-md-6 mb-4 pb-2">
 
                   <div class="form-outline">
-                    <input type="tel" id="phone" name="phone" class="form-control form-control-lg"  maxlength="10" />
+                    <input type="tel" id="phone" name="phone" class="form-control form-control-lg"  maxlength="15" />
                   Phone number
                   </div>
 

@@ -59,34 +59,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
 
-            <nav class="navbar navbar-expand-lg bg-body-tertiary ">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">Navbar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Home</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link active" href="#">Contact Us</a>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link active" href="#">FAQ</a>
-                    </li>
-                </ul>
-                <form class="d-flex" role="search">
-                   
-
-                <a class="btn btn-primary" href="adminHome.php" role="button">Back to dashboard</a>
-
-                </form>
-                </div>
-            </div>
-            </nav>
-
+      
             <br><br><br>
  <h1 class="text-center">View course details</h1><br><br><br>
  
@@ -103,8 +76,11 @@
 
                 <div class="text-center">
                         <a class="btn btn-primary" href="course/addcourse.php" role="button">Add</a>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit">Eddsdsit</button>                        
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>                        
                         <button type="submit" class="btn btn-primary" name="delete">Delete</button>
+                        <button onclick="window.print();" class="btn btn-primary" id="print-btn" >Print</button>
+
+
                 </div>
               
                 <thead class="table-dark">
@@ -181,7 +157,7 @@
                     <td class="text-center border border-2"><input type="checkbox"  name="dlt_chkbox[]" value="<?= $row['id']; ?> "></td>
                     <td class="text-center border border-2"><?php echo "{$row['name']}";?></td>
                     <td class="text-center border border-2"><?php echo "{$row['description']}";?></td>
-                    <td class="text-center border border-2"><img width="60%" src="image/<?php echo $row['image']; ?>">
+                    <td class="text-center border border-2"><img width="60%" src="image/course/<?php echo $row['image']; ?>">
 </td>
 
 
