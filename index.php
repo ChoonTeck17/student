@@ -86,7 +86,7 @@
     <div class ="section 1">
 
         <!-- <label class="random">T1 WIN WORLDS PLS</label> -->
-        <img class="main" src ="image/gojo.jpg">
+        <img class="main" src ="image/uni.jpg">
     </div>
 
     <div class="text-center">
@@ -142,7 +142,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <img class="img2" src ="image/gojo.jpg">
+                <img class="img2" src ="image/unilogo.png">
             </div>
             <div class="col-md-8">
                 <h1>Welcome to Apex University</h1>

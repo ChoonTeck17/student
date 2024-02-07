@@ -22,7 +22,7 @@ if($con){
         $password = $_POST['password'];
 
 
-        $query = "select * from student where username ='".$username."' and password ='".$password."' ";
+        $query = "select * from users where username ='".$username."' and password ='".$password."' ";
 
         $result= mysqli_query($con,$query);
 

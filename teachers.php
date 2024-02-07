@@ -93,25 +93,27 @@
          
             <table id ="info" class="table table-hover table-fixed mx-auto">
                 <col style="width:1%"/>
-                <col style="width:1%"/>
-                <col style="width:15%"/>
-                <col style="width:15%"/>
+                <col style="width:6%"/>
+                <col style="width:6%"/>
                 <col style="width:8%"/>
                 <col style="width:15%"/>
+                <col style="width:7%"/>    
+                <col style="width:7%"/>
                 <col style="width:10%"/>
                 <col style="width:10%"/>
+
+
 
 
                 <div class="text-center">
                         <a class="btn btn-primary" href="teacher/addteacher.php" role="button">Add</a>
                         <button type="button" class="btn btn-primary">Edit</button>
                         <button type="submit" class="btn btn-primary" name="delete">Delete</button>
-                    </div>
+                </div>
               
                 <thead class="table-dark">
                     <tr>
                 
-                    <th class="text-center border border-2" scope="col"></th>
                     <th class="text-center border border-2" scope="col">Id</th>
                     <th class="text-center border border-2" scope="col">First Name</th>
                     <th class="text-center border border-2" scope="col">Last Name</th>
@@ -119,6 +121,11 @@
                     <th class="text-center border border-2" scope="col">Email</th>
                     <th class="text-center border border-2" scope="col">phone</th>
                     <th class="text-center border border-2" scope="col">Date of birth</th>
+                    <th class="text-center border border-2" scope="col">Image</th>
+                    <th class="text-center border border-2" scope="col">Actions</th>
+                    
+
+
 
 
 
@@ -137,7 +144,6 @@
                 foreach($result as $row){
                     ?>
                 <tr>
-                    <td class="text-center border border-2"><input type="checkbox"  name="dlt_chkbox[]" value="<?= $row['id']; ?> "></td>
                     <td class="text-center border border-2"><?php echo "{$row['id']}";?></td>
                     <td class="text-center border border-2"><?php echo "{$row['fname']}";?></td>
                     <td class="text-center border border-2"><?php echo "{$row['lname']}";?></td>
@@ -145,6 +151,11 @@
                     <td class="text-center border border-2"><?php echo "{$row['email']}";?></td>
                     <td class="text-center border border-2"><?php echo "{$row['phone']}";?></td>
                     <td class="text-center border border-2"><?php echo "{$row['dob']}";?></td>
+                    <td class="text-center border border-2"><?php echo "{$row['img']}";?></td>
+                    <td class="text-center border border-2">
+                            <button type="button" class="btn btn-warning me-2" data-bs-dismiss="modal"><i class="fa-solid fa-pen-to-square me-1"></i>Edit</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal"><i class="fa-solid fa-trash me-1"></i>Delete</button>
+                    </td>
 
                 </tr>
                     <?php 

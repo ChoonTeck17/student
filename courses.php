@@ -19,7 +19,7 @@
     $db = "school";
 
     $con = mysqli_connect($host, $user, $password, $db);
-    $query = "select * from student"; 
+    $query = "select * from users"; 
     $result = mysqli_query($con, $query);
 
 
@@ -36,6 +36,7 @@
     <script defer src ="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
     <script defer src ="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
     <script defer src ="script.js"></script>
+    
     <style type="text/css">
 .table {
     margin: 0 auto;
@@ -45,11 +46,12 @@
 </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Courses </title>
+    <title>Courses log</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script type="text/javascript" src="script.js"></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+    crossorigin="anonymous">
   
 </head>
 <body>
@@ -62,34 +64,62 @@
       
             <br><br><br>
  <h1 class="text-center">View course details</h1><br><br><br>
- 
 <div class ="container">
     <form action="course/deletecourse.php" method="POST">
          
             <table id ="info" class="table table-hover table-fixed mx-auto">
-                <col style="width:1%"/>
+                <col style="width:6%"/>
                 <col style="width:10%"/>
                 <col style="width:15%"/>
-                <col style="width:15%"/>
+                <col style="width:6%"/>
 
 
 
-                <div class="text-center">
-                        <a class="btn btn-primary" href="course/addcourse.php" role="button">Add</a>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#edit">Edit</button>                        
-                        <button type="submit" class="btn btn-primary" name="delete">Delete</button>
+                <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-success me-2" data-toggle="modal" data-target="#addcourse"><i class="fa-solid fa-plus me-1"></i>Add</button>
+                        <!-- <a class="btn btn-success me-2" href="course/addcourse.php" role="button">Add</a> -->
                         <button onclick="window.print();" class="btn btn-primary" id="print-btn" >Print</button>
-
-
                 </div>
-              
+              <!-- add course modal -->
+              <div class="modal fade" id="addcourse" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-outline">
+                        Name
+                        <input type="text" id="name" name ="name" class="form-control form-control-lg"  />
+                        </div><br>
+                        <div class="form-outline">
+                        Description
+                            <input type="tel" id="description" name="description" class="form-control form-control-lg" width=100% />  
+                        </div><br>
+                        <div class="form-outline">
+                        Upload image
+                        <input type="file" name="pic" id="pic" accept =".jpg, .jpeg, .png, .gif" value="">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Add</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
                 <thead class="table-dark">
                     <tr>
                 
-                    <th class="text-center border border-2" scope="col"></th>
-                    <th class="text-center border border-2" scope="col"> Name</th>
+                    <th class="text-center border border-2" scope="col">Name</th>
                     <th class="text-center border border-2" scope="col">Description</th>
                     <th class="text-center border border-2" scope="col">Course image</th>
+                    <th class="text-center border border-2" scope="col">Actions</th>
+
 
 
 
@@ -108,11 +138,13 @@
                     <div class="modal-body">
                     <form action="" method="POST"  enctype="multipart/form-data">
 
+                        <input type="hidden" id="id2" name ="id" class="form-control form-control-lg text-center"  />
+
                         <div class="row justify-content-center">
                         <div class="col-md-6 mb-4">
                             <div class="form-outline">
                             Name
-                            <input type="text" id="name" name ="name" class="form-control form-control-lg text-center"  />
+                            <input type="text" id="name2" name ="name" class="form-control form-control-lg text-center"  />
                             </div>
                         </div>              
                         </div>
@@ -120,14 +152,14 @@
                         <div class="col-md-6 mb-4 pb-2">
                             <div class="form-outline">
                             Description
-                            <input type="tel" id="description" name="description" class="form-control form-control-lg" width=100% />  
+                            <input type="tel" id="description2" name="description" class="form-control form-control-lg" width=100% />  
                             </div>
                         </div> 
                         </div>
                         <div class="row  justify-content-center">
                         <div class="col-md-6 mb-4 pb-2">
                         <div class="form-outline">
-                            <input type="file" name="pic" id="pic" accept =".jpg, .jpeg, .png, .gif" value="">
+                            <input type="file" name="pic" id="pic2" accept =".jpg, .jpeg, .png, .gif" value="">
                         </div>
                         </div>           
                         </div>
@@ -137,7 +169,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <input  class="btn btn-primary " type="submit" value="Upload Image" name="add_course" value="Confirm" >
+                        <input  class="btn btn-primary " type="submit" name="cfmedit" value="Confirm" >
                     </div>
                     </div>
                 </div>
@@ -154,11 +186,14 @@
                 foreach($result as $row){
                     ?>
                 <tr>
-                    <td class="text-center border border-2"><input type="checkbox"  name="dlt_chkbox[]" value="<?= $row['id']; ?> "></td>
                     <td class="text-center border border-2"><?php echo "{$row['name']}";?></td>
                     <td class="text-center border border-2"><?php echo "{$row['description']}";?></td>
                     <td class="text-center border border-2"><img width="60%" src="image/course/<?php echo $row['image']; ?>">
-</td>
+                    <td class="text-center border border-2">
+                            <button type="button" class="btn btn-warning me-2" data-bs-dismiss="modal" data-toggle="modal" data-target="#edit"><i class="fa-solid fa-pen-to-square me-1"></i>Edit</button>
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal" data-toggle="modal" data-target="#delete"><i class="fa-solid fa-trash me-1"></i>Delete</button>
+                    </td>
+
 
 
 

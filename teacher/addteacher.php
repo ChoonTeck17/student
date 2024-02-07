@@ -28,6 +28,29 @@ session_start();
       $user_phone=$_POST['phone'];
       $user_gender=$_POST['gender'];
       $user_dob=$_POST['dob'];
+      $image = time().$_FILES["img"]['name'];
+      if(move_uploaded_file($_FILES['pic']['tmp_name'], $_SERVER['DOCUMENT_ROOT'].'/student/image/course/'.$image))
+      {
+        $target_file =  $_SERVER['DOCUMENT_ROOT']. '/student/image/course'.$image;
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $picname = basename($_FILES['pic']['name']);
+        $photo = time().$picname;
+        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"){
+            ?>
+            <script>
+              alert ("pls use correct photo format");
+            </script>
+            <?php 
+        } else if($_FILES["pic"]["size"]>4000000){
+          ?>
+            <script>
+              alert ("pic too big");
+            </script>
+            <?php 
+        } else{
+          $pic_upload = 1;
+        }
+      }
 
       $query = "insert into teachers(fname, lname, email, phone, gender, dob, created) values ('$fname', '$lname', '$user_email', '$user_phone', '$user_gender', '$user_dob', CURRENT_TIMESTAMP)";
       $result=mysqli_query($con,$query);

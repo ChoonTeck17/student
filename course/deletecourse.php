@@ -9,7 +9,7 @@ $db="school";
 $con = mysqli_connect($host, $user, $password, $db);
 
 if(isset($_POST['delete'])){
-    $all_id = $_POST['dlt_chkbox'];
+    $all_id = $_POST['chkbox'];
     $extract_id = implode(',' , $all_id);
     // echo $extract_id;
     $query = "delete from courses where id IN ($extract_id)";

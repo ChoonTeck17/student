@@ -12,7 +12,7 @@ session_start();
     if(isset($_SESSION['usertype']) && $_SESSION['usertype'] === 'admin') {
         $adminID = $_SESSION['id'];
         $admin = $_SESSION['username'];
-        $query = "SELECT username FROM student WHERE usertype='admin' AND id =''";
+        $query = "SELECT username FROM users WHERE usertype='admin' AND id =''";
             $result= mysqli_query($con,$query);
 
             if($result->num_rows > 0){
